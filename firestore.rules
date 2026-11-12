@@ -1,12 +1,19 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /users/{userId} {
-      allow read, delete: if request.auth != null;
-      // Mỗi document users chỉ có đúng bốn trường theo yêu cầu đề bài.
+    match /{collectionId}/{giangVienId} {
+      allow read, delete: if request.auth != null
+        && collectionId == 'Giang Vien';
+      // Mỗi document Giang Vien chỉ có đúng bốn trường theo đề bài.
       allow create, update: if request.auth != null
-        && request.resource.data.keys().hasAll(['email', 'matkhau', 'hoten', 'hinhanh'])
-        && request.resource.data.keys().hasOnly(['email', 'matkhau', 'hoten', 'hinhanh']);
+        && collectionId == 'Giang Vien'
+        && request.resource.data.keys().hasAll(['IDGV', 'Fullname', 'Image', 'SumClass'])
+        && request.resource.data.keys().hasOnly(['IDGV', 'Fullname', 'Image', 'SumClass'])
+        && request.resource.data.IDGV is string
+        && request.resource.data.Fullname is string
+        && request.resource.data.Image is string
+        && request.resource.data.SumClass is int
+        && request.resource.data.SumClass >= 0;
     }
   }
 }

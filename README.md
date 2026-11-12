@@ -1,1 +1,44 @@
-# Quản lý người dùng (Flutter + Firebase)\n\nỨng dụng CRUD responsive chạy Flutter Web và Android/iOS. Firestore collection `users` có đúng bốn trường: `email`, `matkhau`, `hoten`, `hinhanh`; document ID do Firestore cấp, không phải trường dữ liệu. Ảnh được tải lên Firebase Storage, Firestore giữ URL ảnh. Admin đăng nhập bằng Firebase Authentication.\n\n## Cài đặt\n\nYêu cầu Flutter stable, Dart đi kèm Flutter, Android Studio (nếu chạy Android), tài khoản Google để tạo Firebase project.\n\n```bash\nflutter create --platforms web,android,ios .\nflutter pub get\ndart pub global activate flutterfire_cli\nfirebase login\nflutterfire configure\n```\n\nTrong Firebase Console, tạo project, bật **Authentication → Email/Password**, tạo tài khoản admin tại Users, tạo **Cloud Firestore** và **Storage**. Deploy rules:\n\n```bash\nfirebase deploy --only firestore:rules,storage\n```\n\nChạy lutterfire configure để thay cấu hình mẫu trong lib/firebase_options.dart bằng thông tin Firebase project.\n\nChạy web:\n\n```bash\nflutter run -d chrome\nflutter build web\n```\n\nChạy trên thiết bị Android đã kết nối:\n\n```bash\nflutter devices\nflutter run -d <device-id>\n```\n\n## Chức năng\n\n- Đăng nhập/đăng xuất admin qua Firebase Authentication.\n- Thêm, xem danh sách, tìm kiếm, sửa và xóa người dùng.\n- Chọn ảnh từ thư viện/thiết bị; lưu ảnh Firebase Storage và hiển thị ảnh trong danh sách.\n- Bố cục responsive: bảng trên màn hình rộng, thẻ trên màn hình hẹp.\n- Có bộ dữ liệu mẫu JSON ở `database.json`.\n\n## Cấu trúc dữ liệu\n\n```json\n{\n  "email": "nguyen.an@example.com",\n  "matkhau": "Demo@123",\n  "hoten": "Nguyễn An",\n  "hinhanh": "https://..."\n}\n```\n\n**Lưu ý bảo mật:** trường `matkhau` lưu chuỗi mẫu theo đúng đặc tả bài tập, nhưng ứng dụng thực tế không được lưu mật khẩu dạng rõ. Firebase Authentication chỉ xác thực admin; hồ sơ người dùng ở Firestore không tạo tài khoản xác thực riêng.\n\n## Báo cáo và demo\n\nXem `docs/BAO_CAO.md` để làm theo từng bước, chụp ảnh màn hình Firebase Console và app, rồi cập nhật hai link GitHub/video ở cuối báo cáo. Cần kết nối Firebase riêng trước khi demo trực tiếp.\n
+# QLHocPhan - Quản lý giảng viên
+
+Ứng dụng Flutter quản lý collection `Giang Vien` trong Firebase Firestore theo đúng
+đề thi giữa kỳ. Mỗi document chỉ có đúng bốn trường:
+
+```json
+  {
+    "Document ID": "VuaZfh9cBhgU9L5Qit4M",
+    "Fullname": "Lê Văn Mẩn",
+    "IDGV": "GV001",
+    "Image": "\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFla \n16489 characters not shown",
+    "SumClass": 10
+  }
+```
+
+## Chức năng
+
+- Đăng nhập admin bằng Firebase Authentication.
+- Thêm, hiển thị, tìm kiếm, sửa và xóa giảng viên.
+- Nhập hình ảnh từ thư viện trên Android/iOS; ảnh được nén và lưu vào trường `Image`.
+- Hiển thị responsive trên web và thiết bị di động.
+
+## Cài đặt và chạy
+
+Yêu cầu Flutter stable, Android Studio nếu chạy Android, và tài khoản Firebase.
+
+```bash
+flutter pub get
+flutter run -d chrome
+```
+
+Chạy trên Android:
+
+```bash
+flutter devices
+flutter run -d <device-id>
+```
+
+Trong Firebase Console, bật Authentication bằng Email/Password và tạo Cloud
+Firestore. Tạo một tài khoản admin để đăng nhập. Deploy rules:
+
+```bash
+firebase deploy --project giuakidnt-15fb0 --only firestore:rules
+```

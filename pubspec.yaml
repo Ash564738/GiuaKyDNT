@@ -1,5 +1,5 @@
 name: quan_ly_nguoi_dung
-description: Ung dung CRUD nguoi dung Flutter web va mobile voi Firebase.
+description: Ung dung QLHocPhan quan ly giang vien tren web va mobile voi Firebase.
 publish_to: none
 version: 1.0.0+1
 environment:
@@ -11,9 +11,7 @@ dependencies:
   firebase_core: ^5.1.0
   firebase_auth: ^7.0.1
   cloud_firestore: ^7.1.0
-  firebase_storage: ^14.0.1
   image_picker: ^1.2.4
-  uuid: ^4.6.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

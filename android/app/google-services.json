@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "226184242080",
+    "project_id": "giuakidnt-15fb0",
+    "storage_bucket": "giuakidnt-15fb0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226184242080:android:53f392d4b5dc352a6cfac5",
+        "android_client_info": {
+          "package_name": "com.example.quan_ly_nguoi_dung"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDTJBlh3Onkjsja3Z6oniK1_2br8f5nMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
